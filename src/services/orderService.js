@@ -1,16 +1,16 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/orders";
+const API_URL = `${import.meta.env.VITE_API_URL}/orders`;
 
 export const fetchAllOrders = async () => {
     try {
-        const response = await axios.get(API_URL+"/all");
+        const response = await axios.get(`${API_URL}/all`);
         return response.data;
     } catch (error) {
         console.error('Error occured while fetching the orders', error);
         throw error;
     }
-}
+};
 
 export const updateOrderStatus = async (orderId, status) => {
     try {
@@ -22,4 +22,4 @@ export const updateOrderStatus = async (orderId, status) => {
         console.error('Error occured while updating the status', error);
         throw error;
     }
-}
+};
